@@ -1,1 +1,17 @@
-
+{
+  "name": "inventory-sync",
+  "version": "1.0.0",
+  "description": "Polling-based inventory sync prototype, with a standalone webhook signature-verification spike for an upcoming pivot.",
+  "main": "poller.js",
+  "scripts": {
+    "start:supplier": "node mockSupplier.js",
+    "start:poller": "node poller.js",
+    "spike:signature": "node signatureVerification.js"
+  },
+  "keywords": [],
+  "author": "Mureti",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
