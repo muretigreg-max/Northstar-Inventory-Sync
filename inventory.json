@@ -1,0 +1,44 @@
+{
+  "items": {
+    "SKU-1001": 39,
+    "SKU-1002": 11,
+    "SKU-1003": 2,
+    "SKU-1004": 88
+  },
+  "lastSynced": "2026-08-21T12:12:03.026Z",
+  "changeLog": [
+    {
+      "syncedAt": "2026-08-21T12:11:47.997Z",
+      "changes": [
+        "SKU-1001: initial stock recorded at 40",
+        "SKU-1002: initial stock recorded at 13",
+        "SKU-1003: initial stock recorded at 0",
+        "SKU-1004: initial stock recorded at 86"
+      ]
+    },
+    {
+      "syncedAt": "2026-08-21T12:11:53.005Z",
+      "changes": [
+        "SKU-1001: 40 -> 38",
+        "SKU-1002: 13 -> 14",
+        "SKU-1004: 86 -> 84"
+      ]
+    },
+    {
+      "syncedAt": "2026-08-21T12:11:58.014Z",
+      "changes": [
+        "SKU-1001: 38 -> 39",
+        "SKU-1002: 14 -> 12",
+        "SKU-1004: 84 -> 86"
+      ]
+    },
+    {
+      "syncedAt": "2026-08-21T12:12:03.026Z",
+      "changes": [
+        "SKU-1002: 12 -> 11",
+        "SKU-1003: 0 -> 2",
+        "SKU-1004: 86 -> 88"
+      ]
+    }
+  ]
+}
