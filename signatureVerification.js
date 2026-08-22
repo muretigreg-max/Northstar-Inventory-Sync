@@ -1,7 +1,3 @@
-/**
- * SIGNATURE VERIFICATION SPIKE (Day 2)
- * Prototype status: standalone spike, not yet wired into a live endpoint.
-
 const crypto = require('crypto');
 
 // Simulates what the supplier does before sending a webhook.
@@ -9,7 +5,7 @@ function signPayload(payload, secret) {
   return crypto.createHmac('sha256', secret).update(payload).digest('hex');
 }
 
-// Simulates what the receiver must do with an inbound webhook.
+// What the receiver must do with an inbound webhook.
 // Returns false safely for any malformed input instead of throwing.
 function verifySignature(payload, signatureHeader, secret) {
   const expected = Buffer.from(signPayload(payload, secret), 'utf8');
@@ -24,13 +20,17 @@ function verifySignature(payload, signatureHeader, secret) {
   return crypto.timingSafeEqual(expected, received);
 }
 
-// --- Demonstration run ---
-const secret = 'supplier-shared-secret';
-const payload = JSON.stringify({ sku: 'SKU-1001', quantity: 43, timestamp: Date.now() });
+module.exports = { signPayload, verifySignature };
 
-const validSignature = signPayload(payload, secret);
-const tamperedPayload = JSON.stringify({ sku: 'SKU-1001', quantity: 999999, timestamp: Date.now() });
+// --- Demonstration run (only when this file is executed directly) ---
+if (require.main === module) {
+  const secret = 'supplier-shared-secret';
+  const payload = JSON.stringify({ sku: 'SKU-1001', quantity: 43, timestamp: Date.now() });
 
-console.log('Valid signature accepted:', verifySignature(payload, validSignature, secret));
-console.log('Tampered payload rejected:', verifySignature(tamperedPayload, validSignature, secret) === false);
-console.log('Malformed/short signature rejected safely:', verifySignature(payload, 'not-a-real-signature', secret) === false);
+  const validSignature = signPayload(payload, secret);
+  const tamperedPayload = JSON.stringify({ sku: 'SKU-1001', quantity: 999999, timestamp: Date.now() });
+
+  console.log('Valid signature accepted:', verifySignature(payload, validSignature, secret));
+  console.log('Tampered payload rejected:', verifySignature(tamperedPayload, validSignature, secret) === false);
+  console.log('Malformed/short signature rejected safely:', verifySignature(payload, 'not-a-real-signature', secret) === false);
+}
