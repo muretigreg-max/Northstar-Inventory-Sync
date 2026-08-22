@@ -23,21 +23,3 @@ full day-by-day log, including the Day 4 pivot writeup.
   malformed signatures), built ahead of the webhook pivot.
 - `docs/Learning_Blocker_Journal_Days1-4.docx` — the Learning & Blocker
   Journal covering Days 1–4.
-
-## Running it
-
-Install dependencies:
-
-    npm install
-
-In one terminal, start the mock supplier:
-
-    npm run start:supplier
-
-In another terminal, run the poller:
-
-    npm run start:poller
-
-Run the signature-verification spike on its own:
-
-    npm run spike:signature
