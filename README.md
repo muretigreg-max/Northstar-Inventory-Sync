@@ -27,32 +27,6 @@ verification.
 **HMAC-SHA256 webhook signature verification**, promoted from a Day 2
 spike (`signatureVerification.js`) into the security boundary for every
 inbound update.
-
-## Quick start
-
-Install dependencies:
-
-    npm install
-
-In one terminal, start the webhook receiver:
-
-    npm run start:receiver
-
-In another terminal, start the mock supplier (pushes signed events on an
-interval, including a simulated duplicate redelivery and a simulated
-out-of-order delivery so those resilience properties are visible in a
-live run, not just in the test suite):
-
-    npm run start:supplier
-
-Check the current snapshot at any time:
-
-    curl http://localhost:4001/inventory
-
-Run the signature verification module's standalone demonstration:
-
-    npm run demo:signature
-
 ## Tests
 
     npm test
